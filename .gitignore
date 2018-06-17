@@ -8,3 +8,11 @@
 out
 gen
 /videos/
+/pyvenv.cfg
+/pip-selfcheck.json
+/Lib/
+/Scripts/
+/Include/
+/man/
+/result/
+!/result/westworld_s02e01.jpg
