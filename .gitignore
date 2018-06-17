@@ -8,8 +8,6 @@
 out
 gen
 /videos/
-/pyvenv.cfg
-/pip-selfcheck.json
 /Lib/
 /Scripts/
 /Include/
