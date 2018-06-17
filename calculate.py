@@ -89,6 +89,9 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
     # Convert the image back to RGB Colors
     barcode = cv2.cvtColor(barcode, cv2.COLOR_BGR2RGB)
 
+    # Save the image
+    cv2.imwrite("result/%s.jpg" % file, barcode)
+
     # Put the Title text on the image
     cv2.putText(barcode, title,
                 bottom_left_title,
@@ -105,8 +108,8 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
                 font_color_subtitle,
                 line_type_subtitle)
 
-    # Save the image
-    cv2.imwrite("result/%s.jpg" % file, barcode)
+    # Save the second image with text
+    cv2.imwrite("result/%s_text.jpg" % file, barcode)
 
     # Print the elapsed time
     print(fmt.format(rd(seconds=round((time.time() - start_time), 0))))
