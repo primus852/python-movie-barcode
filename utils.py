@@ -53,3 +53,12 @@ def get_colors(hist, centroids):
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
+def str2bool(v):
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        return True
+
