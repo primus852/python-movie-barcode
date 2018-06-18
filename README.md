@@ -2,7 +2,7 @@
 Create a MovieBarcode for any video file. It generates a colored bar by picking the most dominant color for every second of the video file
 
 ## Example
-![Westworld S02E01](https://raw.githubusercontent.com/primus852/python-movie-barcode/master/result/westworld_s02e01.jpg)
+![Westworld S02E01](https://raw.githubusercontent.com/primus852/python-movie-barcode/master/pmb/result/westworld_s02e01.jpg)
 *Westworld Season 02 - Episode 01*
 
 ## Rendering time
