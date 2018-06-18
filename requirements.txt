@@ -3,4 +3,4 @@ tqdm==4.23.4
 daemoniker==0.2.3
 python_dateutil==2.7.3
 scikit_learn==0.19.1
-opencv-python==3.4.1.15
+opencv-python
