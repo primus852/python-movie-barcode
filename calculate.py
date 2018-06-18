@@ -1,10 +1,11 @@
-from sklearn.cluster import KMeans
+from sklearn.cluster import MiniBatchKMeans
 import utils
 import cv2
 import time
 import numpy as np
 from tqdm import tqdm
 from dateutil.relativedelta import relativedelta as rd
+from pprint import pprint
 
 
 def frame_iter(capture, description):
@@ -67,13 +68,13 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
 
         # Convert Image every second
         if count % fps == 0:
+
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             image = image.reshape((image.shape[0] * image.shape[1], 3))
 
-            clt = KMeans(n_clusters=1)
+            clt = MiniBatchKMeans(n_clusters=1, max_iter=10, n_init=1)
             clt.fit(image)
             hist = utils.centroid_histogram(clt)
-
             color = utils.get_colors(hist, clt.cluster_centers_)
 
             # Set the width of the colored bar

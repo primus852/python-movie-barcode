@@ -39,4 +39,3 @@ def str2bool(v):
         return False
     else:
         return True
-

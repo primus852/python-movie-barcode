@@ -6,7 +6,8 @@ Create a MovieBarcode for any video file. It generates a colored bar by picking 
 *Westworld Season 02 - Episode 01*
 
 ## Rendering time
-The above image took about 3 hours with an i5 and four cores
+- ~~The above image took about 3 hours with an i5 and four cores~~
+- Changed the `KMean` Algorithm to `MiniBatchKMeans` and got it down to 1 hour 20 mins. 
 
 ### Bugs
 - When running daemonized on windows, there is an error with arguments in "" or ''
