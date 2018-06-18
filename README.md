@@ -7,6 +7,7 @@ Create a MovieBarcode for any video file. It generates a colored bar by picking 
 
 ## Installation
 - Clone the repository, go to folder
+- First install SciPy: `sudo apt install python-scipy`
 - Run `pip install -r requirements.txt`
 - Install OpenCV Python
   - Ubuntu: `sudo apt install python-opencv`
