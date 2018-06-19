@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     # Parse Arguments
     parser = ArgumentParser()
-    parser.add_argument('-d', '--daemonize', type=str2bool, nargs='?', const=True, default=True, help='Run as Daemon')
+    parser.add_argument('-d', '--daemonize', type=str2bool, nargs='?', const=True, default=False, help='Run as Daemon')
     parser.add_argument('-f', '--file', help='Path to file', required=True)
     parser.add_argument('-w', '--width', help='Width of resulting image', default=1920, type=int)
     parser.add_argument('-height', '--height', help='Height of resulting image', default=1080, type=int)
