@@ -1,4 +1,4 @@
-from pmb.calculate import process_images
+from pmb import calculate as c
 from daemoniker import Daemonizer
 from pmb.utils import str2bool
 from argparse import ArgumentParser
@@ -25,4 +25,4 @@ if __name__ == '__main__':
             is_parent = daemonizer('runs.pid')
 
     # Read the video and process the images
-    process_images(args.file, args.video_title, args.video_subtitle, args.width, args.height, args.path)
+    c.process_images(args.file, args.video_title, args.video_subtitle, args.width, args.height, args.path)

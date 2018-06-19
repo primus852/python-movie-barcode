@@ -1,4 +1,3 @@
-from pmb.utils import centroid_histogram, get_colors
 from sklearn.cluster import MiniBatchKMeans
 import cv2
 import time
@@ -70,7 +69,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
 
             clt = MiniBatchKMeans(n_clusters=1, max_iter=10, n_init=1)
             clt.fit(image)
-            hist = centroid_histogram(clt)
+            hist = utils.centroid_histogram(clt)
             color = get_colors(hist, clt.cluster_centers_)
 
             # Set the width of the colored bar

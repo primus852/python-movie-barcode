@@ -7,3 +7,7 @@
 *.iml
 out
 gen
+/pmb/result/
+!/pmb/result/westworld_s02e01.jpg
+/pmb/videos/
+!/pmb/videos/small.mp4
