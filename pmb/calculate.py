@@ -1,12 +1,12 @@
 from sklearn.cluster import MiniBatchKMeans
 import cv2
-import time
 import numpy as np
 from tqdm import tqdm
 from pmb.utils import centroid_histogram, get_colors
 from dateutil.relativedelta import relativedelta as rd
 from os import path
 import time
+import skvideo.io
 
 
 def frame_iter(capture, description):
@@ -31,7 +31,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     full_path = path.join(videos, file)
 
     # Start the Video Capture
-    cap = cv2.VideoCapture(full_path)
+    cap = skvideo.io.VideoCapture(full_path)
 
     # Calculate some stats of the video
     fps = cap.get(cv2.CAP_PROP_FPS)
