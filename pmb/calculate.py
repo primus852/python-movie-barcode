@@ -3,7 +3,7 @@ import cv2
 import time
 import numpy as np
 from tqdm import tqdm
-from utils import centroid_histogram, get_colors
+from pmb.utils import centroid_histogram, get_colors
 from dateutil.relativedelta import relativedelta as rd
 from os import path
 
