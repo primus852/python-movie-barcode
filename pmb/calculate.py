@@ -4,7 +4,7 @@ import time
 import numpy as np
 from tqdm import tqdm
 from dateutil.relativedelta import relativedelta as rd
-from pprint import pprint
+from os import path
 
 
 def frame_iter(capture, description):
@@ -15,12 +15,18 @@ def frame_iter(capture, description):
     return tqdm(_iterator(), desc=description, total=int(capture.get(cv2.CAP_PROP_FRAME_COUNT)), )
 
 
-def process_images(file, title, subtitle, width=1920, height=1080, path='videos'):
+def process_images(file, title, subtitle, width=1920, height=1080, folder='videos'):
     # Start the timer
     start_time = time.time()
 
+    # Get the relative path
+    videos = path.join(path.dirname(__file__), folder)
+
+    # Full path
+    full_path = path.join(videos, file)
+
     # Start the Video Capture
-    cap = cv2.VideoCapture('%s%s' % (path, file))
+    cap = cv2.VideoCapture(full_path)
 
     # Calculate some stats of the video
     fps = cap.get(cv2.CAP_PROP_FPS)
@@ -34,8 +40,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
         to_shift = round(width / duration, 2)
     except Exception as error:
         print('Can\'t read frame rate and/or duration of video')
-        print('Path: %s%s' % (path, file))
-        pprint(cap.get(cv2.CAP_PROP_FPS))
+        print(full_path)
         exit()
 
 
