@@ -3,6 +3,7 @@ import cv2
 import time
 import numpy as np
 from tqdm import tqdm
+from utils import centroid_histogram, get_colors
 from dateutil.relativedelta import relativedelta as rd
 from os import path
 
@@ -40,7 +41,6 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
         to_shift = round(width / duration, 2)
     except Exception as error:
         print('Can\'t read frame rate and/or duration of video')
-        print(full_path)
         exit()
 
 
@@ -86,7 +86,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
 
             clt = MiniBatchKMeans(n_clusters=1, max_iter=10, n_init=1)
             clt.fit(image)
-            hist = utils.centroid_histogram(clt)
+            hist = centroid_histogram(clt)
             color = get_colors(hist, clt.cluster_centers_)
 
             # Set the width of the colored bar
