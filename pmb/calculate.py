@@ -6,7 +6,7 @@ from tqdm import tqdm
 from pmb.utils import centroid_histogram, get_colors
 from dateutil.relativedelta import relativedelta as rd
 from os import path
-from pprint import pprint
+import time
 
 
 def frame_iter(capture, description):
@@ -137,14 +137,13 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     cv2.imwrite(output_full_text, barcode)
 
     # Save text
-    file_stats = open(output_full_stats, "w+")
-    file_stats.write('File: %s' % file)
-    file_stats.write('Started: %s' % fmt.format(rd(seconds=round(start_time, 0))))
-    file_stats.write('Duration: %s' % fmt.format(rd(seconds=round((time.time() - start_time), 0))))
-    file_stats.close()
+    with open(output_full_stats, "w+") as file_stats:
+        file_stats.write('File: %s\n' % file)
+        file_stats.write('Started: %s\n' % fmt.format(rd(seconds=round(start_time, 0))))
+        file_stats.write('Duration: %s\n' % fmt.format(rd(seconds=round((time.time() - start_time), 0))))
 
     # Print the elapsed time
     print(fmt.format(rd(seconds=round((time.time() - start_time), 0))))
 
     # Print saved path
-    print(output_full)
+    print('Saved to: %s' % output_full)
