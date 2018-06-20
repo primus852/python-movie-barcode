@@ -33,6 +33,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
         to_shift = round(width / duration, 2)
     except Exception as error:
         print('Can\'t read frame rate and/or duration of video')
+        print('Path: %s/%s' % (path, file))
         exit()
 
 
