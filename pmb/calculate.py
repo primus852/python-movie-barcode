@@ -19,7 +19,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
     start_time = time.time()
 
     # Start the Video Capture
-    cap = cv2.VideoCapture('%s/%s' % (path, file))
+    cap = cv2.VideoCapture('%s%s' % (path, file))
 
     # Calculate some stats of the video
     fps = cap.get(cv2.CAP_PROP_FPS)
@@ -33,7 +33,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
         to_shift = round(width / duration, 2)
     except Exception as error:
         print('Can\'t read frame rate and/or duration of video')
-        print('Path: %s/%s' % (path, file))
+        print('Path: %s%s' % (path, file))
         exit()
 
 
