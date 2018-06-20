@@ -130,7 +130,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
                 line_type_subtitle)
 
     # Save the second image with text
-    cv2.imwrite(output_full_text % file, barcode)
+    cv2.imwrite(output_full_text, barcode)
 
     # Save text
     file_stats = open(output_full_stats, 'w')
@@ -141,3 +141,6 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
 
     # Print the elapsed time
     print(fmt.format(rd(seconds=round((time.time() - start_time), 0))))
+
+    # Print saved path
+    print(output_full)
