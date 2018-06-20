@@ -24,7 +24,10 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
     # Calculate some stats of the video
     fps = cap.get(cv2.CAP_PROP_FPS)
     length = cap.get(cv2.CAP_PROP_FRAME_COUNT)
-    duration = round(length / fps, 2)
+    if fps > 0:
+        duration = round(length / fps, 2)
+    else:
+        duration = cap.get(cv2.CAP_PROP_POS_MSEC)
     to_shift = round(width / duration, 2)
 
     # Title Text Vars
