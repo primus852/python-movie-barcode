@@ -17,7 +17,7 @@ def frame_iter(capture, description):
     return tqdm(_iterator(), desc=description, total=int(capture.get(cv2.CAP_PROP_FRAME_COUNT)), )
 
 
-def process_images(file, title, subtitle, width=1920, height=1080, folder='pmb/videos', output_folder='pmb/result'):
+def process_images(file, title, subtitle, width=1920, height=1080, folder='videos/', output_folder='result/'):
     # Start the timer
     start_time = time.time()
 
