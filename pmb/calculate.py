@@ -133,11 +133,10 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     cv2.imwrite(output_full_text, barcode)
 
     # Save text
-    file_stats = open(output_full_stats, 'w')
-    file_stats.write('File: %s' % file)
-    file_stats.write('Started: %s' % fmt.format(rd(seconds=round(start_time, 0))))
-    file_stats.write('Duration: %s' % fmt.format(rd(seconds=round((time.time() - start_time), 0))))
-    file_stats.close()
+    with open(output_full_stats, 'w+') as file_stats:
+        file_stats.write('File: %s' % file)
+        file_stats.write('Started: %s' % fmt.format(rd(seconds=round(start_time, 0))))
+        file_stats.write('Duration: %s' % fmt.format(rd(seconds=round((time.time() - start_time), 0))))
 
     # Print the elapsed time
     print(fmt.format(rd(seconds=round((time.time() - start_time), 0))))
