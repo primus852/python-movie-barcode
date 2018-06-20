@@ -23,15 +23,12 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
 
     # Get the relative path for video
     videos = path.join(path.dirname(__file__), folder)
-    print(videos)
 
     # Get the relative path for output
     result_folder = path.join(path.dirname(__file__), output_folder)
-    print(result_folder)
 
     # Full path for video
     full_path = path.join(videos, file)
-    print(full_path)
 
     # Start the Video Capture
     cap = cv2.VideoCapture(full_path)
@@ -110,9 +107,9 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     barcode = cv2.cvtColor(barcode, cv2.COLOR_BGR2RGB)
 
     # Result Filepath
-    output_full = path.join(output_folder, '%s.jpg' % file)
-    output_full_text = path.join(output_folder, '%s_text.jpg' % file)
-    output_full_stats = path.join(output_folder, '%s_stats.txt' % file)
+    output_full = path.join(result_folder, '%s.jpg' % file)
+    output_full_text = path.join(result_folder, '%s_text.jpg' % file)
+    output_full_stats = path.join(result_folder, '%s_stats.txt' % file)
 
     # Save the image
     try:
@@ -140,11 +137,11 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     cv2.imwrite(output_full_text, barcode)
 
     # Save text
-    # file_stats = open(output_full_stats, "w+")
-    # file_stats.write('File: %s' % file)
-    # file_stats.write('Started: %s' % fmt.format(rd(seconds=round(start_time, 0))))
-    # file_stats.write('Duration: %s' % fmt.format(rd(seconds=round((time.time() - start_time), 0))))
-    # file_stats.close()
+    file_stats = open(output_full_stats, "w+")
+    file_stats.write('File: %s' % file)
+    file_stats.write('Started: %s' % fmt.format(rd(seconds=round(start_time, 0))))
+    file_stats.write('Duration: %s' % fmt.format(rd(seconds=round((time.time() - start_time), 0))))
+    file_stats.close()
 
     # Print the elapsed time
     print(fmt.format(rd(seconds=round((time.time() - start_time), 0))))
