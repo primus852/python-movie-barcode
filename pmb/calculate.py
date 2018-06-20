@@ -27,9 +27,6 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     # Get the relative path for output
     result_folder = path.join(path.dirname(__file__), output_folder)
 
-    pprint(path.exists(result_folder))
-    print('TEST')
-
     # Full path for video
     full_path = path.join(videos, file)
 
@@ -116,7 +113,8 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
 
     # Save the image
     try:
-        cv2.imwrite('result/%s.jpg' % file, barcode)
+        print output_full
+        cv2.imwrite(output_full, barcode)
     except Exception as error:
         print('Image Write Error: %s' % error)
 
