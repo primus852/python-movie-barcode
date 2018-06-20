@@ -28,7 +28,13 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
         duration = round(length / fps, 2)
     else:
         duration = cap.get(cv2.CAP_PROP_POS_MSEC)
-    to_shift = round(width / duration, 2)
+
+    try:
+        to_shift = round(width / duration, 2)
+    except Exception as error:
+        print('Can\'t read frame rate and/or duration of video')
+        exit()
+
 
     # Title Text Vars
     font_title = cv2.FONT_HERSHEY_SIMPLEX
