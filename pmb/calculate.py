@@ -4,6 +4,7 @@ import time
 import numpy as np
 from tqdm import tqdm
 from dateutil.relativedelta import relativedelta as rd
+from pprint import pprint
 
 
 def frame_iter(capture, description):
@@ -34,6 +35,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, path='videos'
     except Exception as error:
         print('Can\'t read frame rate and/or duration of video')
         print('Path: %s%s' % (path, file))
+        pprint(cap)
         exit()
 
 
