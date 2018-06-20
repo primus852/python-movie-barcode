@@ -16,14 +16,17 @@ def frame_iter(capture, description):
     return tqdm(_iterator(), desc=description, total=int(capture.get(cv2.CAP_PROP_FRAME_COUNT)), )
 
 
-def process_images(file, title, subtitle, width=1920, height=1080, folder='videos'):
+def process_images(file, title, subtitle, width=1920, height=1080, folder='videos', output_folder='result'):
     # Start the timer
     start_time = time.time()
 
-    # Get the relative path
+    # Get the relative path for video
     videos = path.join(path.dirname(__file__), folder)
 
-    # Full path
+    # Get the relative path for output
+    result_folder = path.join(path.dirname(__file__), output_folder)
+
+    # Full path for video
     full_path = path.join(videos, file)
 
     # Start the Video Capture
@@ -102,8 +105,13 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     # Convert the image back to RGB Colors
     barcode = cv2.cvtColor(barcode, cv2.COLOR_BGR2RGB)
 
+    # Result Filepath
+    output_full = path.join(output_folder, '%s.jpg' % file)
+    output_full_text = path.join(output_folder, '%s_text.jpg' % file)
+    output_full_stats = path.join(output_folder, '%s_stats.txt' % file)
+
     # Save the image
-    cv2.imwrite("result/%s.jpg" % file, barcode)
+    cv2.imwrite(output_full, barcode)
 
     # Put the Title text on the image
     cv2.putText(barcode, title,
@@ -122,7 +130,14 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
                 line_type_subtitle)
 
     # Save the second image with text
-    cv2.imwrite("result/%s_text.jpg" % file, barcode)
+    cv2.imwrite(output_full_text % file, barcode)
+
+    # Save text
+    file_stats = open(output_full_stats, 'w')
+    file_stats.write('File: %s' % file)
+    file_stats.write('Started: %s' % fmt.format(rd(seconds=round(start_time, 0))))
+    file_stats.write('Duration: %s' % fmt.format(rd(seconds=round((time.time() - start_time), 0))))
+    file_stats.close()
 
     # Print the elapsed time
     print(fmt.format(rd(seconds=round((time.time() - start_time), 0))))
