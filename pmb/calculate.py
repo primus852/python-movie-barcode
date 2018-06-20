@@ -113,7 +113,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
 
     # Save the image
     try:
-        print output_full
+        print (output_full)
         cv2.imwrite(output_full, barcode)
     except Exception as error:
         print('Image Write Error: %s' % error)
