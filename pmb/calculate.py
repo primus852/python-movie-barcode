@@ -111,7 +111,10 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     output_full_stats = path.join(output_folder, '%s_stats.txt' % file)
 
     # Save the image
-    cv2.imwrite(output_full, barcode)
+    try:
+        cv2.imwrite(output_full, barcode)
+    except Exception as error:
+        print('Image Write Error: %s' % error)
 
     # Put the Title text on the image
     cv2.putText(barcode, title,
