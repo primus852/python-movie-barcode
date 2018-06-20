@@ -27,6 +27,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
 
     # Get the relative path for output
     result_folder = path.join(path.dirname(__file__), output_folder)
+    print(result_folder)
 
     # Full path for video
     full_path = path.join(videos, file)
