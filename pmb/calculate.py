@@ -30,6 +30,8 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     # Full path for video
     full_path = path.join(videos, file)
 
+    print(full_path)
+
     # Start the Video Capture
     cap = cv2.VideoCapture(full_path)
 
