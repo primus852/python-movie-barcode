@@ -31,7 +31,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     full_path = path.join(videos, file)
 
     # Start the Video Capture
-    cap = skvideo.io.vread(full_path)
+    cap = cv2.VideoCapture(full_path)
 
     # Calculate some stats of the video
     fps = cap.get(cv2.CAP_PROP_FPS)
