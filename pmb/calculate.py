@@ -30,7 +30,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     full_path = path.join(videos, file)
 
     # Start the Video Capture
-    cap = cv2.VideoCapture(full_path)
+    cap = cv2.VideoCapture(full_path, cv2.VideoWriter_fourcc(*'X264'))
 
     if not cap.isOpened():
         print('Video could not be opened: %s' % full_path)
@@ -110,7 +110,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     barcode = cv2.cvtColor(barcode, cv2.COLOR_BGR2RGB)
 
     # Result Filepath
-    output_full = path.join(result_folder, '%s.bmp' % file)
+    output_full = path.join(result_folder, '%s.jpg' % file)
     output_full_text = path.join(result_folder, '%s_text.jpg' % file)
     output_full_stats = path.join(result_folder, '%s_stats.txt' % file)
 
