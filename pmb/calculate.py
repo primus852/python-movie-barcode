@@ -30,7 +30,7 @@ def process_images(file, title, subtitle, width=1920, height=1080, folder='video
     full_path = path.join(videos, file)
 
     # Start the Video Capture
-    cap = cv2.VideoCapture(full_path, cv2.VideoWriter_fourcc(*'X264'))
+    cap = cv2.VideoCapture(full_path)
 
     if not cap.isOpened():
         print('Video could not be opened: %s' % full_path)
